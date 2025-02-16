@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 const evaluationRoutes = require("./routes/evaluationRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/api/auth", validateInput, userRoutes);
 app.use("/api/employees", authMiddleware, employeeRoutes);
 app.use("/api/evaluations", authMiddleware, evaluationRoutes);
 app.use("/api/feedback", authMiddleware, feedbackRoutes);
+app.use("/api/reports", authMiddleware, reportRoutes);
 
 app.use(errorHandler);
 
