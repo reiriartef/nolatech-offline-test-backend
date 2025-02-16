@@ -9,6 +9,7 @@ const validateInput = require("./middlewares/validateInput");
 const authMiddleware = require("./middlewares/authMiddleware");
 const userRoutes = require("./routes/userRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
+const evaluationRoutes = require("./routes/evaluationRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -18,6 +19,7 @@ connectDb();
 
 app.use("/api/auth", validateInput, userRoutes);
 app.use("/api/employees", authMiddleware, employeeRoutes);
+app.use("/api/evaluations", authMiddleware, evaluationRoutes);
 
 app.use(errorHandler);
 
