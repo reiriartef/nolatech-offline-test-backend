@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema({
@@ -9,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     enum: ["Admin", "Manager", "Employee"],
     required: true,
   },
+  employee: { type: Schema.Types.ObjectId, ref: "Employee" },
 });
 
 // Encriptar contraseña antes de guardar

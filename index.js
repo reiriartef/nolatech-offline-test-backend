@@ -8,6 +8,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const validateInput = require("./middlewares/validateInput");
 const authMiddleware = require("./middlewares/authMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
 
 app.use(express.json());
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 connectDb();
 
 app.use("/api/auth", validateInput, userRoutes);
+app.use("/api/employees", authMiddleware, employeeRoutes);
 
 app.use(errorHandler);
 
