@@ -50,7 +50,12 @@ async function loginUser({ username, password }) {
   }
 
   return jwt.sign(
-    { username: user.username, role: user.role, employee: user.employee },
+    {
+      username: user.username,
+      role: user.role,
+      employee: user.employee,
+      id: user._id,
+    },
     process.env.JWT_SECRET,
     { expiresIn: "1h" }
   );
